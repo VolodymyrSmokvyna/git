@@ -1,0 +1,36 @@
+const weekTemperature = {
+  options: {
+    dailyTemperatures: {
+      'Sunday': -10,
+      'Monday': -5,
+      'Tuesday': 0,
+      'Wednesday': 3,
+      'Thursday': -2,
+      'Friday': -1,
+      'Saturday': 5
+    }
+  },
+  temperaturesRange () {
+    return Object.values(this.options.dailyTemperatures)
+  },
+  averageTemperatureValue () {
+    let temperatures = this.temperaturesRange()
+    let averageValue = temperatures.reduce((a, b) => (a + b)) / temperatures.length
+
+    return Math.round(averageValue)
+  },
+  getAverageTemperature () {
+    let averageTemperature = this.averageTemperatureValue()
+
+    return (Math.sign(averageTemperature) > 0) ? `+ ${averageTemperature}` : `${averageTemperature}`
+  },
+  getClosestDay () {
+    let temperatures = this.temperaturesRange()
+    let averageTemperature = this.averageTemperatureValue()
+    let closestTemperature = temperatures.reduce((a, b) => {
+      return (Math.abs(a - averageTemperature) < Math.abs(b - averageTemperature)) ? a : b
+    })
+
+    return Object.keys(this.options.dailyTemperatures).find(key => this.options.dailyTemperatures[key] === closestTemperature)
+  }
+}
