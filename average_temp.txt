@@ -39,9 +39,3 @@ const weekTemperature = {
     return Object.keys(this.options.dailyTemperatures).find(key => this.options.dailyTemperatures[key] === closestTemperature)
   }
 }
-
-setAverageTemperature () {
-    let averageTemperature = this.averageTemperatureValue()
-
-    return (Math.sign(averageTemperature) > 0) ? `+ ${averageTemperature}` : `${averageTemperature}`
-  },
