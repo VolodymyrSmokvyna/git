@@ -50,7 +50,3 @@ setClosestDay () {
     return Object.keys(this.options.dailyTemperatures).find(key => this.options.dailyTemperatures[key] === closestTemperature)
   }
 }
-
-setAverageTemperature () {
-    let averageTemperature = this.averageTemperatureValue()
-  }
