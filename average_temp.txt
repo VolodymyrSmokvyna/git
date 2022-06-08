@@ -39,3 +39,14 @@ const weekTemperature = {
     return Object.keys(this.options.dailyTemperatures).find(key => this.options.dailyTemperatures[key] === closestTemperature)
   }
 }
+
+setClosestDay () {
+    let temperatures = this.temperaturesRange()
+    let averageTemperature = this.averageTemperatureValue()
+    let closestTemperature = temperatures.reduce((a, b) => {
+      return (Math.abs(a - averageTemperature) < Math.abs(b - averageTemperature)) ? a : b
+    })
+
+    return Object.keys(this.options.dailyTemperatures).find(key => this.options.dailyTemperatures[key] === closestTemperature)
+  }
+}
